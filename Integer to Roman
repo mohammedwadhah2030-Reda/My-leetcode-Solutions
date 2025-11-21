@@ -1,0 +1,19 @@
+char* intToRoman(int num) {
+    static char result[20];
+    int i = 0;
+
+    int values[] =  {1000, 900, 500, 400, 100,  90,  50,  40,  10,   9,   5,   4,   1};
+    char* symbols[] = {"M", "CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+
+    for (int k = 0; k < 13; k++) {
+        while (num >= values[k]) {
+            int len = strlen(symbols[k]);
+            strcpy(&result[i], symbols[k]);
+            i += len;
+            num -= values[k];
+        }
+    }
+
+    result[i] = '\0';
+    return result;
+}
